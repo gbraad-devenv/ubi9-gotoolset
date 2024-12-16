@@ -1,0 +1,6 @@
+FROM ghcr.io/gbraad-devenv/ubi/base:9
+
+USER root
+
+ENTRYPOINT ["/sbin/init"]
+CMD ["/sbin/init"]
