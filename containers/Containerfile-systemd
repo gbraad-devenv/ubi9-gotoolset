@@ -5,4 +5,4 @@ FROM ghcr.io/gbraad-devenv/ubi9-gotoolset/dotfiles:${BASE_VERSION}
 USER root
 
 ENTRYPOINT ["/sbin/init"]
-CMD ["/sbin/init"]
+#CMD ["/sbin/init"]
