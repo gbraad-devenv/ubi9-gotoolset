@@ -1,0 +1,20 @@
+ARG BASE_VERSION="1.22.7"
+
+FROM ghcr.io/gbraad-devenv/ubi9-gotoolset/base:${BASE_VERSION}
+
+USER root
+
+RUN dnf install -y \
+        https://dl.fedoraproject.org/pub/epel/epel-release-latest-9.noarch.rpm \
+    && dnf install -y \
+        powerline \
+        vim-powerline \
+        stow \
+    && dnf clean all \
+    && rm -rf /var/cache/yum
+
+USER gbraad
+ENV HOME=/home/gbraad
+
+RUN git clone https://github.com/gbraad/dotfiles ~/.dotfiles \
+    && ~/.dotfiles/install.sh

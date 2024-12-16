@@ -1,0 +1,32 @@
+name: build containers
+run-name: building containers
+on:
+  schedule:
+    - cron: "0 0 1 * *"
+  workflow_dispatch:
+jobs:
+  build:
+    permissions:
+      contents: read
+      packages: write
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os:
+          - ubuntu-24.04
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v4
+      - name: Run podman build - base
+        run: podman build -t ghcr.io/gbraad-devenv/ubi9-gotoolset/base:1.22.7 -f containers/Containerfile-base .
+      - name: Run podman build - dotfiles
+        run: podman build -t ghcr.io/gbraad-devenv/ubi9-gotoolset/dotfiles:1.22.7 -f containers/Containerfile-dotfiles .
+      - name: Run podman build - systemd
+        run: podman build -t ghcr.io/gbraad-devenv/ubi9-gotoolset/systemd:1.22.7 -f containers/Containerfile-systemd .
+      - name: Push image to ghcr.io - base
+        run: podman push --creds=${{ github.actor }}:${{ secrets.GITHUB_TOKEN }} ghcr.io/gbraad-devenv/ubi9-gotoolset/base:1.22.7
+      - name: Push image to ghcr.io - dotfiles
+        run: podman push --creds=${{ github.actor }}:${{ secrets.GITHUB_TOKEN }} ghcr.io/gbraad-devenv/ubi9-gotoolset/dotfiles:1.22.7
+      - name: Push image to ghcr.io - systemd
+        run: podman push --creds=${{ github.actor }}:${{ secrets.GITHUB_TOKEN }} ghcr.io/gbraad-devenv/ubi9-gotoolset/systemd:1.22.7

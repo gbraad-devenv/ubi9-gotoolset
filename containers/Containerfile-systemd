@@ -1,4 +1,6 @@
-FROM ghcr.io/gbraad-devenv/ubi/base:9
+ARG BASE_VERSION="1.22.7"
+
+FROM ghcr.io/gbraad-devenv/ubi9-gotoolset/dotfiles:${BASE_VERSION}
 
 USER root
 

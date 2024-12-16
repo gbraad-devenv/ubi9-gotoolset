@@ -1,5 +1,5 @@
-Gerard Braad's UBI development environment
-==========================================
+Gerard Braad's UBI9 Go development environment
+==============================================
 
 !["Prompt"](https://raw.githubusercontent.com/gbraad/assets/gh-pages/icons/prompt-icon-64.png)
 
@@ -12,9 +12,20 @@ Usage
 
 ### Cloud
 
-  * Open in [Gitpod workspace](https://gitpod.io/#https://github.com/gbraad-devenv/ubi)
-  * Open in [CodeSandbox](https://codesandbox.io/p/github/gbraad-devenv/ubi)
-  * `ubienv` in [my dotfiles](https://github.com/gbraad/dotfiles/blob/main/zsh/.zshrc.d/devenv.zsh)
+  * Open in [Gitpod workspace](https://gitpod.io/#https://github.com/gbraad-devenv/ubi9-gotoolset)
+  * Open in [CodeSandbox](https://codesandbox.io/p/github/gbraad-devenv/ubi9-gotoolset)
+  * `goenv` and `gosys` in [my dotfiles](https://github.com/gbraad/dotfiles/blob/main/zsh/.zshrc.d/devenv.zsh)
+
+
+### Container
+
+```
+$ podman run -it --rm ghcr.io/gbraad-devenv/ubi9-gotoolset/dotfiles:1.22.7
+```
+
+```
+$ podman run -d --name gosys ghcr.io/gbraad-devenv/ubi9-gotoolset/systemd:1.22.7
+```
 
 
 Authors
