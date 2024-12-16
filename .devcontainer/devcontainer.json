@@ -2,10 +2,12 @@
     "name": "Go development environment",
     "image": "ghcr.io/gbraad-devenv/ubi9-gotoolset/dotfiles:1.22.7",
     "runArgs": [ "--cap-add=NET_ADMIN", "--cap-add=NET_RAW", "--device=/dev/net/tun" ],
+    "postStartCommand": ".github/install.sh",
 
     "customizations": {
         "vscode": {
             "extensions": [
+                "ms-vscode.Theme-TomorrowKit",
             ]
         }
     }
