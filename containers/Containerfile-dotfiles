@@ -7,8 +7,11 @@ USER root
 RUN dnf install -y \
         https://dl.fedoraproject.org/pub/epel/epel-release-latest-9.noarch.rpm \
     && dnf install -y \
+        https://mirror.stream.centos.org/9-stream/BaseOS/x86_64/os/Packages/tmux-3.2a-5.el9.x86_64.rpm \
+    && dnf install -y \
         powerline \
         vim-powerline \
+        tmux-powerline \
         stow \
     && dnf clean all \
     && rm -rf /var/cache/yum
