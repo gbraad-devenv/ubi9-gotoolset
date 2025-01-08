@@ -4,5 +4,16 @@ FROM ghcr.io/gbraad-devenv/ubi9-gotoolset/dotfiles:${BASE_VERSION}
 
 USER root
 
+RUN cd /tmp \
+    && curl -fL https://code.visualstudio.com/sha/download?build=stable\&os=cli-alpine-x64 -o code-cli.tar.gz \
+    && tar zxvf code-cli.tar.gz \
+    && mv code /usr/bin/code \
+    && rm -f code-cli.tar.gz
+
+# systemd
+COPY assets/code-serveweb@.service /etc/systemd/system/
+
+RUN systemctl enable tailscaled \
+    && systemctl enable code-serveweb@root.service
+
 ENTRYPOINT ["/sbin/init"]
-#CMD ["/sbin/init"]
