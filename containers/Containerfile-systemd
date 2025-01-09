@@ -14,7 +14,6 @@ RUN cd /tmp \
 COPY assets/code-serveweb@.service /etc/systemd/system/
 COPY assets/code-tunnel@.service /etc/systemd/system/
 
-RUN systemctl enable tailscaled \
-    && systemctl enable code-serveweb@root.service
+RUN systemctl enable tailscaled
 
 ENTRYPOINT ["/sbin/init"]
