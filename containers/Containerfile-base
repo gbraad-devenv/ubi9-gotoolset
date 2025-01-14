@@ -6,7 +6,7 @@ FROM ${BASE_IMAGE}:${BASE_VERSION} AS base
 USER root
 
 RUN dnf install -y \
-        sudo git-core \
+        util-linux-user sudo git-core \
     && dnf clean all \
     && rm -rf /var/cache/yum
 
