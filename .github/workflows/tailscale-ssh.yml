@@ -18,7 +18,6 @@ jobs:
           do
               sleep 0.1
           done
-          podman exec code chmod 640 /etc/shadow
         env:
           TAILSCALE_AUTHKEY: ${{ secrets.TAILSCALE_AUTHKEY}}
       - name: Hang around
